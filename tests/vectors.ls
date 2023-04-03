@@ -27,7 +27,7 @@ lib_internal	= lib._lib_internal
 	NOISE_ERROR_NONE
 }						= lib.constants
 files_to_test			= [
-	__dirname + '/../vendor/tests/vector/cacophony.txt'
+	__dirname + '/cacophony.json'
 	__dirname + '/../vendor/tests/vector/noise-c-basic.txt'
 	__dirname + '/../vendor/tests/vector/noise-c-fallback.txt'
 	__dirname + '/../vendor/tests/vector/noise-c-hybrid.txt'

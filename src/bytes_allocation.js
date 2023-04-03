@@ -23,7 +23,7 @@
     pointer['get'] = function (as) {
       as = as || Uint8Array;
       // Create copy, since source buffer might be changed later
-      return (new as(buffer, pointer, size / as.BYTES_PER_ELEMENT)).slice();
+      return (new as(wasmMemory.buffer, pointer, size / as.BYTES_PER_ELEMENT)).slice();
     };
     pointer['dereference'] = function (size) {
       size = size || 4;

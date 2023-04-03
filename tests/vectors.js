@@ -14,7 +14,7 @@
     var lib_internal, ref$, NOISE_PATTERN_XX_FALLBACK, NOISE_PATTERN_XX_FALLBACK_HFS, NOISE_ACTION_NONE, NOISE_ACTION_WRITE_MESSAGE, NOISE_ACTION_READ_MESSAGE, NOISE_ACTION_FAILED, NOISE_ACTION_SPLIT, NOISE_ROLE_INITIATOR, NOISE_ROLE_RESPONDER, NOISE_ERROR_NONE, files_to_test, one_way_pattern_regexp, i$, len$, filename;
     lib_internal = lib._lib_internal;
     ref$ = lib.constants, NOISE_PATTERN_XX_FALLBACK = ref$.NOISE_PATTERN_XX_FALLBACK, NOISE_PATTERN_XX_FALLBACK_HFS = ref$.NOISE_PATTERN_XX_FALLBACK_HFS, NOISE_ACTION_NONE = ref$.NOISE_ACTION_NONE, NOISE_ACTION_WRITE_MESSAGE = ref$.NOISE_ACTION_WRITE_MESSAGE, NOISE_ACTION_READ_MESSAGE = ref$.NOISE_ACTION_READ_MESSAGE, NOISE_ACTION_FAILED = ref$.NOISE_ACTION_FAILED, NOISE_ACTION_SPLIT = ref$.NOISE_ACTION_SPLIT, NOISE_ROLE_INITIATOR = ref$.NOISE_ROLE_INITIATOR, NOISE_ROLE_RESPONDER = ref$.NOISE_ROLE_RESPONDER, NOISE_ERROR_NONE = ref$.NOISE_ERROR_NONE;
-    files_to_test = [__dirname + '/../vendor/tests/vector/cacophony.txt', __dirname + '/../vendor/tests/vector/noise-c-basic.txt', __dirname + '/../vendor/tests/vector/noise-c-fallback.txt', __dirname + '/../vendor/tests/vector/noise-c-hybrid.txt'];
+    files_to_test = [__dirname + '/cacophony.json', __dirname + '/../vendor/tests/vector/noise-c-basic.txt', __dirname + '/../vendor/tests/vector/noise-c-fallback.txt', __dirname + '/../vendor/tests/vector/noise-c-hybrid.txt'];
     one_way_pattern_regexp = /^Noise[^_]*_[NXK][^NKXI]/;
     function set_fixed_ephemeral(hs, ephemeral, hybrid){
       var dh, s, error;

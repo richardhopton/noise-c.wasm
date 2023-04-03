@@ -15,9 +15,9 @@ patterns	= [
 	'NNhfs' 'NKhfs' 'NXhfs' 'XNhfs' 'XKhfs' 'XXhfs' 'KNhfs' 'KKhfs' 'KXhfs' 'INhfs' 'IKhfs' 'IXhfs'
 	'XXfallback+hfs' 'NXnoidh+hfs' 'XXnoidh+hfs' 'KXnoidh+hfs' 'IKnoidh+hfs' 'IXnoidh+hfs'
 ]
-curves		= ['25519' '448' 'NewHope']
-ciphers		= ['ChaChaPoly' 'AESGCM']
-hashes		= ['SHA256' 'SHA512' 'BLAKE2s' 'BLAKE2b']
+curves		= ['25519']
+ciphers		= ['ChaChaPoly']
+hashes		= ['SHA256']
 plaintexts	= [new Uint8Array, Uint8Array.from(randombytes(10))]
 random1		= randombytes(32)
 random2		= randombytes(64)

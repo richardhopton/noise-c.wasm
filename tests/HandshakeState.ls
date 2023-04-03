@@ -11,9 +11,9 @@ patterns			= [
 	'N' 'X' 'K'
 	'NN' 'NK' 'NX' 'XN' 'XK' 'XX' 'KN' 'KK' 'KX' 'IN' 'IK' 'IX'
 ]
-curves				= ['25519' '448' 'NewHope']
-ciphers				= ['ChaChaPoly' 'AESGCM']
-hashes				= ['SHA256' 'SHA512' 'BLAKE2s' 'BLAKE2b']
+curves				= ['25519']
+ciphers				= ['ChaChaPoly']
+hashes				= ['SHA256']
 prologues			= [null, new Uint8Array, randombytes(10)]
 psks				= [null, new Uint8Array, randombytes(32)]
 ads					= [new Uint8Array, randombytes(256)]

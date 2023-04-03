@@ -9,7 +9,7 @@
   createLib = require('..');
   randombytes = require('crypto').randomBytes;
   test = require('tape');
-  ciphers = ['NOISE_CIPHER_CHACHAPOLY', 'NOISE_CIPHER_AESGCM'];
+  ciphers = ['NOISE_CIPHER_CHACHAPOLY'];
   plaintexts = [new Uint8Array, Uint8Array.from(randombytes(10))];
   ads = [new Uint8Array, randombytes(256)];
   key = randombytes(32);

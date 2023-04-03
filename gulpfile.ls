@@ -23,36 +23,20 @@ gulp
 			'vendor/src/protocol/signstate.c'
 			'vendor/src/protocol/symmetricstate.c'
 			'vendor/src/protocol/util.c'
-			'vendor/src/backend/ref/dh-curve448.c'
-			'vendor/src/backend/ref/dh-newhope.c'
-			'vendor/src/backend/ref/hash-blake2s.c'
-			'vendor/src/crypto/blake2/blake2s.c'
-			'vendor/src/crypto/curve448/curve448.c'
-			'vendor/src/crypto/goldilocks/src/p448/arch_32/p448.c'
-			'vendor/src/crypto/newhope/batcher.c'
-			'vendor/src/crypto/newhope/error_correction.c'
-			'vendor/src/crypto/newhope/fips202.c'
-			'vendor/src/crypto/newhope/newhope.c'
-			'vendor/src/crypto/newhope/ntt.c'
-			'vendor/src/crypto/newhope/poly.c'
-			'vendor/src/crypto/newhope/precomp.c'
-			'vendor/src/crypto/newhope/reduce.c'
 			'vendor/src/backend/ref/cipher-aesgcm.c'
 			'vendor/src/backend/ref/cipher-chachapoly.c'
 			'vendor/src/backend/ref/dh-curve25519.c'
 			'vendor/src/backend/ref/hash-blake2b.c'
+			'vendor/src/backend/ref/hash-blake2s.c'
 			'vendor/src/backend/ref/hash-sha256.c'
-			'vendor/src/backend/ref/hash-sha512.c'
-			'vendor/src/backend/ref/sign-ed25519.c'
 			'vendor/src/crypto/aes/rijndael-alg-fst.c'
 			'vendor/src/crypto/blake2/blake2b.c'
+			'vendor/src/crypto/blake2/blake2s.c'
 			'vendor/src/crypto/chacha/chacha.c'
 			'vendor/src/crypto/donna/poly1305-donna.c'
-			'vendor/src/crypto/ghash/ghash.c'
-			'vendor/src/crypto/newhope/crypto_stream_chacha20.c'
 			'vendor/src/crypto/sha2/sha256.c'
 			'vendor/src/crypto/sha2/sha512.c'
-			'vendor/src/crypto/ed25519/ed25519.c'
+			'vendor/src/crypto/x25519/x25519.c'
 		].join(' ')
 		/**
 		 * There are many functions exposed by the library, but only subset of them is used in production, so the rest are still here, uncomment when/if needed
@@ -87,6 +71,7 @@ gulp
 #			'_noise_symmetricstate_get_protocol_id'
 			'_noise_symmetricstate_mix_hash'
 			'_noise_symmetricstate_mix_key'
+			'_noise_symmetricstate_mix_key_and_hash'
 #			'_noise_symmetricstate_new_by_id'
 			'_noise_symmetricstate_new_by_name'
 			'_noise_symmetricstate_split'
@@ -112,6 +97,7 @@ gulp
 			'_noise_handshakestate_new_by_name'
 			'_noise_handshakestate_read_message'
 			'_noise_handshakestate_set_pre_shared_key'
+			'_noise_handshakestate_set_pre_shared_key_hook'
 			'_noise_handshakestate_set_prologue'
 			'_noise_handshakestate_split'
 			'_noise_handshakestate_start'
@@ -219,7 +205,7 @@ gulp
 		# Options that are only specified to optimize resulting file size and basically remove unused features
 		optimize	= "-Oz --llvm-lto 1 --closure 1 -s NO_EXIT_RUNTIME=1 -s NO_FILESYSTEM=1 -s EXPORTED_RUNTIME_METHODS=[] -s DEFAULT_LIBRARY_FUNCS_TO_INCLUDE=[]"
 		clang_opts	= "-include #__dirname/src/ed25519_random_and_hash.h -I vendor/include -I vendor/include/noise/keys -I vendor/src -I vendor/src/protocol -I vendor/src/crypto/goldilocks/src/include -I vendor/src/crypto/goldilocks/src/p448 -I vendor/src/crypto/goldilocks/src/p448/arch_32"
-		command		= "EMMAKEN_CFLAGS='#clang_opts' emcc #files src/noise-c.c src/ed25519_random_and_hash.c --js-library src/library_random_bytes.js --post-js src/bytes_allocation.js -o src/noise-c.js -s MODULARIZE=1 -s 'EXPORT_NAME=\"__noise_c_wasm\"' -s EXPORTED_FUNCTIONS='#functions' -s WASM=1 #optimize"
+		command		= "EMCC_CFLAGS='#clang_opts' emcc #files src/noise-c.c src/ed25519_random_and_hash.c --js-library src/library_random_bytes.js --post-js src/bytes_allocation.js -o src/noise-c.js -s MODULARIZE=1 -s 'EXPORT_NAME=\"__noise_c_wasm\"' -s EXPORTED_FUNCTIONS='#functions' -s WASM=1 #optimize"
 		exec(command, (error, stdout, stderr) !->
 			if stdout
 				console.log(stdout)
